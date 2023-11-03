@@ -2,7 +2,12 @@
 @import url("reset.css");
 
 
-body {}
+body {
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: indigo;
+}
 
 
 .wrapper {
@@ -10,102 +15,199 @@ body {}
 	min-height: 100%;
 }
 
-/* для усіх "__container" однаково */
-[class*="__container"] {
-	max-width: 1220px;
-	margin: 0 auto;	
-	padding: 20px;
+ h1 {
+	font-weight: 800;
+	color: #efefff;
+	font-size: 50px;
+	text-shadow: 10px 10px 20px #989898;
+	padding: 5px;
 }
-
-
 
 /* ---------------- */
-.main {
-}
-.play {
-
-	border: 1px solid #fff;
-}
-.play__container {
-	max-width: 800px;
-	margin: 0 auto;
-	height: 100vh;	
-	background-color: rgb(43, 43, 43);	
-}
-
-/* -- */
-.play__item > *:not(:last-child) {
-	margin-bottom: ;
-}
-.play__item {
-	position: relative;
-}
-.play__item--item1 {
-	width: 50px;
-	height: 50px;
-	background-color: #fff;
-}
-.play__item--item2 {
-	width: 650px;
-	height: 50px;
-	background-color: #024c07;
+/* Игровое поле, линии */
+.game {
+	background: url(../img/oboi-03.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: cover;
+	border-radius: 15px;
+	background-color: indigo;
+	max-width: 850px;
+	padding: 30px 30px 0 30px;
+ }
+ .start { /* start */
+	width: 100px;
+	height: 100px;
+	background: url(../img/klipart.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: cover;
+ }
+ [class^="line"] {
+	padding: 20px;
+	background-color: indigo;
 	visibility: hidden;
-}
-/* -- */
-.play__item:hover .play__item--item2 {  /* - */
-	visibility: visible;
-}
-/* -- */
+ }
+ .line-1 { } /* на всю ширину */
 
-
-.play__item--item3 {
-	width: 50px;
+ .line-2 {
 	height: 150px;
-	background-color: #511b1b;
+	width: 40px;
+	margin-left: auto;
+ }
+ .line-7 { } /* на всю ширину */
 
-	position: absolute;
-	top: 100px;
-	right: 110px;
-	visibility: hidden;
-}
-/* -- */
-.play__item--item1, .play__item--item2:hover .play__item--item3 {
-	visibility: visible;
-}
-/* -- */
-
-
-.play__item--item4 {
-	width: 150px;
+ .line-8 {
 	height: 50px;
-	background-color: yellowgreen;
-
-	position: absolute;
-	top: 250px;
-	right: 110px;
-}
-.play__item--item5 {
 	width: 50px;
-	height: 150px;
-	background-color: yellow;
-	position: absolute;
-	top: 300px;
-	right: 210px;
+	margin-right: auto;
+ }
+
+ .line-5 { 
+	width: 30%;
+	height: 50px;
+	margin-left: 68.5%;
+ }
+
+ .line-6 {
+	height: 80px;
+	width: 50px;
+	margin-left: 92%;
+ }
+ .line-3 { 
+	width: 250px;
+	height: 50px;
+	margin-left: auto;
+ }
+ .line-4 { 
+	width: 50px;
+	height: 110px;
+	margin-left: 68.5%;
+ }
+
+ /* Механика игры */
+ .start:hover ~ .line-1,
+ .line-1:hover {
+	visibility: visible;
+ }
+ 
+ .line-1:hover ~ .line-2,
+ .line-2:hover {
+	visibility: visible;
+ }
+ .line-2:hover ~ .line-3,
+ .line-3:hover {
+	visibility: visible;
+ }
+ .line-3:hover ~ .line-4,
+ .line-4:hover {
+	visibility: visible;
+ }
+ .line-4:hover ~ .line-5,
+ .line-5:hover {
+	visibility: visible;
+ }
+ .line-5:hover ~ .line-6,
+ .line-6:hover {
+	visibility: visible;
+ }
+ .line-6:hover ~ .line-7,
+ .line-7:hover {
+	visibility: visible;
+ }
+ .line-7:hover ~ .line-8,
+ .line-8:hover {
+	visibility: visible;
+ }
+
+
+
+
+ /* ================весь контейнер======внизу=========================== */
+
+
+/* ---- */
+
+/* ---- */
+
+.title-button {
+	font-size: 30px;
+	color: rgb(12, 20, 179);
+	text-align: center;
+	font-weight: 900;
+
+	text-shadow: 1px 0 0 #fff;
 }
-.play__item--item6 {
-	width: 350px;
-	height: 30px;
-	background-color: yellow;
-	position: absolute;
-	top: 420px;
-	right: 230px;
+.title-button:hover {
+	color: rgb(179, 12, 12);
+	cursor: pointer;
+	transition: 0.7s;
 }
-.play__item--item7 {
-	width: 30px;
-	height: 250px;
-	background-color: yellow;
-	position: absolute;
-	top: 450px;
-	right: 550px;
+
+/* ----Делаем кнопку ---при наведенни ---увеличивается----- */
+
+/* ---list (кнопка)--- */
+.list { 
+margin: 0px 0; /* растояние от кнопки до контента */
+height: 50px;	
+margin-left: 30px;
+width: 50px;
+background-color: darkorchid;
 }
-/* -------------- */
+.list a {
+padding: 15px 0;				/* ставим текст по центру кнтейнера */
+color: #fc3131;
+font-weight: 900;
+display: flex;    			/* ставим текст по центру */
+justify-content: center;	/* ставим текст по центру */
+/*align-items: center;		/* ставим текст по центру */
+visibility: hidden;			/* прячем надпись на кнопке */
+}
+.list:hover {
+width: 100%;				/* делаем кнопку на всю ширину блока */
+transform: translate(0px, 0px);
+transition: all 0.7s;
+opacity: 0.5;
+}
+.list:hover::after {  	/* интересное появление кнопки */
+transform: translate(-100%, 0px);
+}
+.list:hover a {
+visibility: visible; 		/* показываем надпись на кнопке */
+transform: scale(1.1);		/* увеличение размера кнопки */
+}
+/* ----- */
+
+#box1-b { /* это фон для НОВОЙ страницы под фото */
+background-color: rgb(194, 246, 127);
+}
+
+/* ---img--- */
+.image-oboi {
+display: inline-block;
+position: relative;
+overflow: hidden;
+}
+.image-oboi img{
+ max-width: 100%;
+}
+.image-oboi::after { /* позиционируем и добавляем рпозрачный фон img */
+content: "";
+position: absolute; 
+width: 100%; 
+height: 100%; 
+top: 0; 
+left: 0; 
+background-color: indigo;
+opacity: 1;
+}
+.image-oboi:hover {			/* увеливение img при наведении */
+transform: scale(1.1);
+transition: all 0.7s;
+}
+.image-oboi:hover::after { /* интересное появление img */
+opacity: 0;		
+transform: translate(-100%, 0px);
+transition: all 0.7s;
+}
+/* ---img--- */
